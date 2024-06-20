@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  mysql:
+    image: mysql:8.0.37
+    container_name: furina-mysql
+    environment:
+      MYSQL_DATABASE: furina
+      MYSQL_ROOT_PASSWORD: furina-password
+      TZ: Asia/Shanghai
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - /etc/localtime:/etc/localtime
+    command:
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+    ports:
+      - 7392:3306
